@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-    AA_WF_VAR :"this is another workflow"
+    AA_WF_VAR: "this is another workflow"
 
 permissions:
   contents: read
