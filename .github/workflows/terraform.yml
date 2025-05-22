@@ -84,10 +84,10 @@ jobs:
 
       - name: Tests
         env:
-            AA_STEP_VAR: "my variable"
-            run: |
-              echo "Github Env Variable: ${{ VARS.TF_VAR_NAME}}"
-              export
+          AA_STEP_VAR: "my variable"
+        run: |
+          echo "Github Env Variable: ${{ VARS.TF_VAR_NAME}}"
+          export
                  
          
       # On push to "main", build or change infrastructure according to Terraform configuration files
