@@ -43,7 +43,7 @@ jobs:
     - name: Terraform Plan
       env: 
         TF_VAR_name_prefix: marietf
-      run: terrafrom show -no-color plan.out >> $GITHUB_STEP_SUMMARY
+      run: terraform show -no-color plan.out >> $GITHUB_STEP_SUMMARY
 
     - name: Adding markdown
       run: echo '### Hello world! 🚀' >> $GITHUB_STEP_SUMMARY
