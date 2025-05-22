@@ -27,6 +27,9 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
 
+    - name: Adding markdown
+      run: terafrom show -no-color plan.out >> $GITHUB_STEP_SUMMARY
+
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
@@ -41,6 +44,9 @@ jobs:
       env: 
         TF_VAR_name_prefix: marietf
       run: terraform plan -input=false -out plan.out
+
+    - name: Adding markdown
+      run: echo '### Hello world! 🚀' >> $GITHUB_STEP_SUMMARY
 
     # Upload the plan artifact
     - name: 'Upload Artifact'
