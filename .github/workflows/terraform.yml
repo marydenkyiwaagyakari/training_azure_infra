@@ -82,9 +82,9 @@ jobs:
         with:
           name: plan.out
 
-          -name: Tests
-           env:
-              AA_STEP_VAR: "my variable"
+      - name: Tests
+        env:
+            AA_STEP_VAR: "my variable"
             run: |
               echo "Github Env Variable: ${{ VARS.TF_VAR_NAME}}"
               export
