@@ -5,6 +5,9 @@ on:
     branches: [ "main" ]
   pull_request:
 
+env:
+    AA_WF_VAR :"this is another workflow"
+
 permissions:
   contents: read
 
@@ -60,6 +63,8 @@ jobs:
     runs-on: self-hosted
     environment: production
     needs: ["plan"]
+    env:
+      AA_ENV_VAR: ${{vars.TF_VAR_NAME}}
  
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -76,6 +81,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: plan.out
+
+          -name: Tests
+           env:
+              AA_STEP_VAR: "my variable"
+            run: |
+              echo "Github Env Variable: ${{ VARS.TF_VAR_NAME}}"
+              export
+                 
          
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
